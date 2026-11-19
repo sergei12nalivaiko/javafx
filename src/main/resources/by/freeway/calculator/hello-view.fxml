@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- Объявление версии XML и кодировки UTF-8 -->
+
+<?import javafx.geometry.Insets?> <!-- Импорт класса Insets для настройки внутренних отступов -->
+<?import javafx.scene.control.TextField?> <!-- Импорт класса TextField для поля вывода текста -->
+<?import javafx.scene.control.Button?> <!-- Импорт класса Button для создания кнопок -->
+<?import javafx.scene.layout.VBox?> <!-- Импорт класса VBox для вертикального расположения элементов -->
+<?import javafx.scene.layout.GridPane?> <!-- Импорт класса GridPane для создания сетки кнопок -->
+<?import javafx.scene.layout.ColumnConstraints?> <!-- Импорт класса ColumnConstraints для настройки ширины колонок -->
+
+<!-- Корневой элемент VBox: выравнивание по центру, расстояние между элементами 15.0, привязка к контроллеру -->
+<VBox alignment="CENTER" spacing="15.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="by.freeway.calculator.HelloController">
+
+    <!-- Начало настройки внутренних отступов для всего контейнера VBox -->
+    <padding>
+        <!-- Отступы: снизу 20.0, слева 20.0, справа 20.0, сверху 20.0 пикселей -->
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding> <!-- Конец настройки отступов -->
+
+    <!-- Поле вывода (экран калькулятора), привязано к переменной display в Java-контроллере через fx:id -->
+    <!-- editable="false" запрещает ручной ввод с клавиатуры, text="0" задает начальное значение -->
+    <!-- style задает CSS-стили: размер шрифта 28px, выравнивание текста по правому краю, ширина 240px -->
+    <TextField fx:id="display" editable="false" text="0"
+               style="-fx-font-size: 28px; -fx-alignment: center-right; -fx-pref-width: 240px;"/>
+
+    <!-- Сетка GridPane для расположения кнопок, горизонтальный и вертикальный зазор между ячейками 8.0 пикселей -->
+    <GridPane hgap="8.0" vgap="8.0">
+
+        <!-- Начало настройки ограничений для колонок сетки -->
+        <columnConstraints>
+            <!-- Первая колонка: может расти, минимальная ширина 60.0, предпочтительная ширина 60.0 -->
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="60.0" prefWidth="60.0" />
+            <!-- Вторая колонка: может расти, минимальная ширина 60.0, предпочтительная ширина 60.0 -->
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="60.0" prefWidth="60.0" />
+            <!-- Третья колонка: может расти, минимальная ширина 60.0, предпочтительная ширина 60.0 -->
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="60.0" prefWidth="60.0" />
+            <!-- Четвертая колонка: может расти, минимальная ширина 60.0, предпочтительная ширина 60.0 -->
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="60.0" prefWidth="60.0" />
+        </columnConstraints> <!-- Конец настройки ограничений колонок -->
+
+        <!-- === РЯД 1 (rowIndex="0") === -->
+        <!-- Кнопка "C" (очистка), колонка 0, вызывает метод onClear при нажатии, размер шрифта 20px -->
+        <Button text="C" onAction="#onClear" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "/", колонка 1, вызывает метод onOperatorClick, размер шрифта 20px -->
+        <Button text="/" onAction="#onOperatorClick" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "*", колонка 2, вызывает метод onOperatorClick, размер шрифта 20px -->
+        <Button text="*" onAction="#onOperatorClick" GridPane.columnIndex="2" GridPane.rowIndex="0" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "-", колонка 3, вызывает метод onOperatorClick, размер шрифта 20px -->
+        <Button text="-" onAction="#onOperatorClick" GridPane.columnIndex="3" GridPane.rowIndex="0" style="-fx-font-size: 20px;"/>
+
+        <!-- === РЯД 2 (rowIndex="1") === -->
+        <!-- Кнопка "7", колонка 0, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="7" onAction="#onNumberClick" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "8", колонка 1, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="8" onAction="#onNumberClick" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "9", колонка 2, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="9" onAction="#onNumberClick" GridPane.columnIndex="2" GridPane.rowIndex="1" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "+", колонка 3, занимает 2 ряда подряд (rowSpan="2"), вызывает метод onOperatorClick, размер шрифта 20px -->
+        <Button text="+" onAction="#onOperatorClick" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2" style="-fx-font-size: 20px;"/>
+
+        <!-- === РЯД 3 (rowIndex="2") === -->
+        <!-- Кнопка "4", колонка 0, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="4" onAction="#onNumberClick" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "5", колонка 1, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="5" onAction="#onNumberClick" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "6", колонка 2, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="6" onAction="#onNumberClick" GridPane.columnIndex="2" GridPane.rowIndex="2" style="-fx-font-size: 20px;"/>
+
+        <!-- === РЯД 4 (rowIndex="3") === -->
+        <!-- Кнопка "1", колонка 0, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="1" onAction="#onNumberClick" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "2", колонка 1, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="2" onAction="#onNumberClick" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "3", колонка 2, вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="3" onAction="#onNumberClick" GridPane.columnIndex="2" GridPane.rowIndex="3" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка "=", колонка 3, ряд 3, занимает 2 ряда подряд (rowSpan="2"), вызывает метод onEqualClick, размер шрифта 20px -->
+        <Button text="=" onAction="#onEqualClick" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2" style="-fx-font-size: 20px;"/>
+
+        <!-- === РЯД 5 (rowIndex="4") === -->
+        <!-- Кнопка "0", колонка 0, занимает 2 колонки подряд (columnSpan="2"), вызывает метод onNumberClick, размер шрифта 20px -->
+        <Button text="0" onAction="#onNumberClick" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" style="-fx-font-size: 20px;"/>
+        <!-- Кнопка ".", колонка 2, вызывает метод onDecimalClick, размер шрифта 20px -->
+        <Button text="." onAction="#onDecimalClick" GridPane.columnIndex="2" GridPane.rowIndex="4" style="-fx-font-size: 20px;"/>
+
+    </GridPane> <!-- Конец элемента GridPane -->
+</VBox> <!-- Конец корневого элемента VBox -->
